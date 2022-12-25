@@ -21,11 +21,29 @@ const initialContacts = [
   { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
 ];
 
+// CONSTANTS
+const LS_KEY = 'contacts-edit';
+
 export class App extends Component {
   state = {
     contacts: initialContacts,
     filter: '',
   };
+
+  componentDidMount() {
+    const existingContacts = localStorage.getItem(LS_KEY);
+    const { contacts } = this.state;
+
+    this.setState({
+      contacts:
+        existingContacts !== null ? JSON.parse(existingContacts) : contacts,
+    });
+  }
+
+  componentDidUpdate(_, prevState) {
+    if (prevState !== this.state.contacts)
+      localStorage.setItem(LS_KEY, JSON.stringify(this.state.contacts));
+  }
 
   addContact = contact => {
     const inContacts = this.state.contacts.some(
@@ -78,7 +96,7 @@ export class App extends Component {
           <Filter value={filter} onChange={this.onFilterChange} />
         ) : (
           <p style={{ marginTop: 10, color: `#fb6d3a`, fontWeight: 700 }}>
-            You have no contacts yet
+            You have no contacts yet (；′⌒`)
           </p>
         )}
 
