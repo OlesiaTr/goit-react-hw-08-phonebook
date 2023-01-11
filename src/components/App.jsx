@@ -33,14 +33,18 @@ export class App extends Component {
   componentDidMount() {
     const existingContacts = localStorage.getItem(LS_KEY);
     const { contacts } = this.state;
+    console.log(contacts, 'line 36');
 
     this.setState({
       contacts:
         existingContacts !== null ? JSON.parse(existingContacts) : contacts,
     });
+
+    console.log(contacts, 'line 43');
   }
 
   componentDidUpdate(_, prevState) {
+    console.log(this.state.contacts, 'line 44');
     if (prevState !== this.state.contacts)
       localStorage.setItem(LS_KEY, JSON.stringify(this.state.contacts));
   }
@@ -70,6 +74,7 @@ export class App extends Component {
   onFilter = () => {
     const { contacts, filter } = this.state;
     const standardizedFiler = filter.toLowerCase();
+    console.log(contacts, 'line 73');
 
     return contacts.filter(contact =>
       contact.name.toLowerCase().includes(standardizedFiler)
@@ -83,6 +88,7 @@ export class App extends Component {
   render() {
     const filterList = this.onFilter();
     const { contacts, filter } = this.state;
+    console.log(contacts, 'line 87');
 
     return (
       <Layout>
