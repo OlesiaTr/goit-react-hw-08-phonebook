@@ -1,10 +1,7 @@
 // Core
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, nanoid } from '@reduxjs/toolkit';
 import storage from 'redux-persist/lib/storage';
 import { persistReducer } from 'redux-persist';
-
-// Utils
-import { nanoid } from 'nanoid';
 
 const initialContactsState = {
   contactData: [
