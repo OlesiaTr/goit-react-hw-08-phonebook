@@ -1,6 +1,6 @@
 // Core
 import { useDispatch } from 'react-redux';
-import { deleteContact } from 'redux/contactsSlice';
+import { deleteContact } from 'redux/operations';
 
 // Utils
 import { PropTypes } from 'prop-types';

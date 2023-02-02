@@ -1,8 +1,8 @@
 // Core
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { addContact } from 'redux/contactsSlice';
-import { getContacts } from 'redux/selectors';
+import { addContact } from 'redux/operations';
+import { selectContacts, selectIsLoading } from 'redux/selectors';
 
 // Components
 import { Button } from './../Button';
@@ -13,9 +13,17 @@ import { Form, Label } from './ContactForm.styled';
 export const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+  const [submitted, setSubmitted] = useState(false);
 
-  const contacts = useSelector(getContacts);
+  const contacts = useSelector(selectContacts);
+  const isLoading = useSelector(selectIsLoading);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (submitted && !isLoading) {
+      setSubmitted(false);
+    }
+  }, [isLoading, submitted]);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -27,6 +35,7 @@ export const ContactForm = () => {
     if (withinContacts) return alert(`${name} is already in contacts`);
 
     dispatch(addContact({ name, number }));
+    setSubmitted(true);
     setName('');
     setNumber('');
   };
@@ -73,7 +82,9 @@ export const ContactForm = () => {
         />
       </Label>
 
-      <Button type="submit">Add contact</Button>
+      <Button type="submit" disabled={submitted}>
+        Add contact
+      </Button>
     </Form>
   );
 };

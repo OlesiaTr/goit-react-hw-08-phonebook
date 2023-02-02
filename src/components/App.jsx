@@ -1,20 +1,36 @@
 // Core
-import { useSelector } from 'react-redux';
-import { getContacts } from './../redux/selectors';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchContacts } from 'redux/operations';
+import {
+  selectContacts,
+  selectError,
+  selectIsLoading,
+} from './../redux/selectors';
 
 // Components
 import { ContactForm } from './ContactForm';
 import { ContactList } from './ContactList';
 import { Filter } from './Filter';
+import { Loader } from './Loader';
 
 // Styles
 import { Layout } from './Layout';
 
 export const App = () => {
-  const contacts = useSelector(getContacts);
+  const dispatch = useDispatch();
+  const contacts = useSelector(selectContacts);
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
+
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
 
   return (
     <Layout>
+      {isLoading && !error && <Loader />}
+
       <h1>Phonebook</h1>
 
       <ContactForm />

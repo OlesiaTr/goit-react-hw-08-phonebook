@@ -1,13 +1,13 @@
 // Core
 import { useDispatch, useSelector } from 'react-redux';
-import { getFilter } from 'redux/selectors';
+import { selectFilter } from 'redux/selectors';
 import { setFilter } from 'redux/filtersSlice';
 
 // Styles
 import { Label } from './Filter.styled';
 
 export const Filter = () => {
-  const value = useSelector(getFilter);
+  const value = useSelector(selectFilter);
   const dispatch = useDispatch();
 
   const onChange = e => {
