@@ -1,4 +1,5 @@
 // Utils
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { MdEmail, MdPassword } from 'react-icons/md';
 
@@ -9,7 +10,6 @@ export const Main = styled.main`
 
 export const Form = styled.form`
   width: 320px;
-
   margin-top: 50px;
 `;
 
@@ -96,5 +96,24 @@ export const Btn = styled.button`
   :focus {
     background-color: #1e2939;
     box-shadow: inset 0 4px 4px rgb(0 0 0 / 15%);
+  }
+`;
+
+export const RedirectWrapper = styled.p`
+  text-align: center;
+  font-weight: 500;
+
+  margin-top: 20px;
+`;
+
+export const RedirectLink = styled(Link)`
+  text-decoration: underline;
+  color: #2b3a55;
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  :hover,
+  :focus {
+    color: #fb6d3a;
   }
 `;

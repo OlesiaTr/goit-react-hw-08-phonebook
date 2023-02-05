@@ -11,6 +11,8 @@ import {
   Email,
   Password,
   Btn,
+  RedirectWrapper,
+  RedirectLink,
 } from './LoginForm.styled';
 
 export const LoginForm = () => {
@@ -42,6 +44,9 @@ export const LoginForm = () => {
           <Password />
         </Label>
         <Btn type="submit">Log In</Btn>
+        <RedirectWrapper>
+          or <RedirectLink to="/register">Sign Up</RedirectLink>
+        </RedirectWrapper>
       </Form>
     </Main>
   );
