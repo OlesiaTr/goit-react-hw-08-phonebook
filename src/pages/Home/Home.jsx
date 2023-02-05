@@ -3,7 +3,7 @@ import { TitleWrapper, Icon, LinksWrapper, HomeLink } from './Home.styled';
 
 export default function Home() {
   return (
-    <>
+    <main>
       <TitleWrapper>
         <Icon />
         <h1>Phone Book App</h1>
@@ -14,6 +14,6 @@ export default function Home() {
         <p> or</p>
         <HomeLink to="/register">Sign Up</HomeLink>
       </LinksWrapper>
-    </>
+    </main>
   );
 }
