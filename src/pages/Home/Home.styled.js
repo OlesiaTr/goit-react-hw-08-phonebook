@@ -28,6 +28,11 @@ export const LinksWrapper = styled.div`
   gap: 10px;
 `;
 
+export const Desc = styled.p`
+  color: #fb6d3a;
+  font-weight: 500;
+`;
+
 export const HomeLink = styled(Link)`
   display: flex;
   justify-content: center;
@@ -50,13 +55,3 @@ export const HomeLink = styled(Link)`
     color: #fb6d3a;
   }
 `;
-
-/*
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  &:hover,
-  &:focus {
-    background-color: ${p => p.theme.colors.buttonActive};
-  }
-  &:not(:last-child) {
-    margin-bottom: ${p => p.theme.space[3]};
-  } */

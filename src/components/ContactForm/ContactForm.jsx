@@ -8,7 +8,7 @@ import { selectContacts, selectIsLoading } from 'redux/contacts/selectors';
 import { Button } from './../Button';
 
 // Styles
-import { Form, Label } from './ContactForm.styled';
+import { Form, Label, Input, User, Number } from './ContactForm.styled';
 
 export const ContactForm = () => {
   const [name, setName] = useState('');
@@ -58,7 +58,7 @@ export const ContactForm = () => {
     <Form onSubmit={handleSubmit}>
       <Label>
         Name{' '}
-        <input
+        <Input
           type="text"
           name="name"
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -67,11 +67,12 @@ export const ContactForm = () => {
           onChange={handleChange}
           value={name}
         />
+        <User />
       </Label>
 
       <Label>
         Number{' '}
-        <input
+        <Input
           type="tel"
           name="number"
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
@@ -80,6 +81,7 @@ export const ContactForm = () => {
           onChange={handleChange}
           value={number}
         />
+        <Number />
       </Label>
 
       <Button type="submit" disabled={submitted}>

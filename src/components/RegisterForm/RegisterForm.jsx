@@ -1,4 +1,5 @@
 // Core
+import { toast } from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/operations';
 
@@ -28,7 +29,13 @@ export const RegisterForm = () => {
         email: form.elements.email.value,
         password: form.elements.password.value,
       })
-    );
+    )
+      .unwrap()
+      .then(() => toast.success('Registration was successful'))
+      .catch(() =>
+        toast.error('Registration failed. Perhaps such user already exists')
+      );
+
     form.reset();
   };
 
@@ -51,6 +58,7 @@ export const RegisterForm = () => {
           <Password />
         </Label>
         <Btn type="submit">Register</Btn>
+
         <RedirectWrapper>
           or <RedirectLink to="/login">Log in</RedirectLink>
         </RedirectWrapper>

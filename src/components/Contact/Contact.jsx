@@ -6,7 +6,7 @@ import { deleteContact } from 'redux/contacts/operations';
 import { PropTypes } from 'prop-types';
 
 // Styles
-import { Name } from './Contact.styled';
+import { Wrapper, Name, Number, Icon, Phone } from './Contact.styled';
 import { Btn } from 'components/Button/Button.styled';
 
 export const Contact = ({ item: { name, id, number } }) => {
@@ -16,9 +16,16 @@ export const Contact = ({ item: { name, id, number } }) => {
 
   return (
     <>
-      <Name>- {name}</Name>
-      <p>{number}</p>
-      <Btn onClick={onDeleteContact}>Delete</Btn>
+      <Wrapper>
+        <Name>{name}</Name>
+        <Number>
+          <Phone />
+          {number}
+        </Number>
+      </Wrapper>
+      <Btn onClick={onDeleteContact}>
+        <Icon />
+      </Btn>
     </>
   );
 };

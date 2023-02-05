@@ -1,6 +1,7 @@
 // Core
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/operations';
+import { toast } from 'react-hot-toast';
 
 // Styles
 import {
@@ -26,7 +27,12 @@ export const LoginForm = () => {
         email: form.elements.email.value,
         password: form.elements.password.value,
       })
-    );
+    )
+      .unwrap()
+      .then(() => toast.success('You logged in successfully'))
+      .catch(() =>
+        toast.error('Something went wrong. Check your login and password')
+      );
     form.reset();
   };
 

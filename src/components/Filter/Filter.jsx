@@ -1,10 +1,10 @@
 // Core
 import { useDispatch, useSelector } from 'react-redux';
-import { selectFilter } from 'redux/selectors';
-import { setFilter } from 'redux/filtersSlice';
+import { selectFilter } from 'redux/filter/selectors';
+import { setFilter } from 'redux/filter/slice';
 
 // Styles
-import { Label } from './Filter.styled';
+import { Label, Input, Search } from './Filter.styled';
 
 export const Filter = () => {
   const value = useSelector(selectFilter);
@@ -17,8 +17,14 @@ export const Filter = () => {
 
   return (
     <Label>
-      Find contacts by name
-      <input onChange={onChange} type="text" name="filter" value={value} />
+      <Input
+        onChange={onChange}
+        type="text"
+        name="filter"
+        value={value}
+        placeholder="Search for contact ..."
+      />
+      <Search />
     </Label>
   );
 };
