@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { addContact } from 'redux/contacts/operations';
-import { selectContacts, selectIsLoading } from 'redux/selectors';
+import { selectContacts, selectIsLoading } from 'redux/contacts/selectors';
 
 // Components
 import { Button } from './../Button';
