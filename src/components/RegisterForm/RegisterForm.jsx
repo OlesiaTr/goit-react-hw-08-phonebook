@@ -44,17 +44,28 @@ export const RegisterForm = () => {
       <Form onSubmit={handleSubmit} autoComplete="off">
         <Label>
           Username
-          <Input type="text" name="name" />
+          <Input
+            type="text"
+            name="name"
+            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+            required
+          />
           <User />
         </Label>
         <Label>
           Email
-          <Input type="email" name="email" />
+          <Input
+            type="email"
+            name="email"
+            title="A valid email address consists of three parts: an individual part, the at-sign @, and a domain name part."
+            required
+          />
           <Email />
         </Label>
         <Label>
           Password
-          <Input type="password" name="password" />
+          <Input type="password" name="password" minLength={7} required />
           <Password />
         </Label>
         <Btn type="submit">Register</Btn>
